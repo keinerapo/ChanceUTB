@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Chance UTB</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <!-- Jquery Mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="pageone">
+            <div data-role="header">
+                <h1>REGISTRO</h1>
+
+            </div>
+            <div data-role="content">
+                <div data-role="main" class="ui-content">
+                    <form autocomplete="on" id="forminsc">
+                        <label for="nombre1" >Primer Nombre:</label>
+                        <input type="text" name="nombre1" id="nombre1" placeholder="Primer Nombre">
+                        <label for="nombre2" >Segundo Nombre:</label>
+                        <input type="text" name="nombre2" id="nombre2" placeholder="Segun Nombre">
+                        <label for="apellido1" >Primer Apellido:</label>
+                        <input type="text" name="apellido1" id="apellido1" placeholder="Primer Apellido">
+                        <label for="apellido2" >Segundo Apellido:</label>
+                        <input type="text" name="apellido2" id="apellido2" placeholder="Segundo Apellido">
+                     <!--   <label for="bday">Fecha de nacimiento:</label>
+                        <input type="date" name="bday" id="bday">-->
+                        <label for="codigo">Codigo:</label>
+                        <input type="text" name="codigo" id="codigo" placeholder="Codigo de usuario" value="">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" value="" autocomplete="off">
+                        <label for="email">E-mail:</label>
+                        <input type="text" name="email" id="email" placeholder="Correo electronico" value="">
+                        <label for="sexo">Sexo:</label>
+                        <select name="sexo" id="sexo" data-native-menu="false">
+                            <option value="0" data-placeholder="true">Sexo</option>
+                            <option value="1">M</option>
+                            <option value="2">F</option>
+                        </select>
+                        <input type="submit" data-inline="true" value="Submit" id="submit">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#submit').bind('onclick', function() {
+
+                    var json = ('#forminsc').serialize();
+                    window.localStorage.setItem("usuario", json);
+                    var url = "http://localhost:8000/usuario/create";
+
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        dataType: "json",
+                        data: json,
+                        success: function(data) {
+                            alert(data);
+                        }
+                    });
+                    //location.reload(true);
+                });
+            });
+
+
+        </script>
+</html>
