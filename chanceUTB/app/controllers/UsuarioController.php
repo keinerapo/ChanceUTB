@@ -15,7 +15,7 @@ class UsuarioController extends BaseController{
 		$usuario->apellido1 = Input::get('apellido1');
 		$usuario->apellido2 = Input::get('apellido2');
 		$usuario->codigo = Input::get('codigo');
-		//$usuario->bday = Input::get('bday');
+		$usuario->bday = Input::get('bday');
 		$usuario->email = Input::get('email');
 		$usuario->sexo = Input::get('sexo');
 		$usuario->password = Input::get('password');

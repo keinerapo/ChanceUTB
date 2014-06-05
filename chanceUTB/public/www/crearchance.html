@@ -49,14 +49,18 @@ and open the template in the editor.
                                 </select>
                         <label for="placa">Placa del carro:</label>
                         <input type="text" name="placa" id="placa" placeholder="placa">
+                        <label for="fecha">Fecha de salida:</label>
+                        <input type="date" name="fecha" id="fecha" placeholder="Fecha del chance">
+                        <label for="hora">Hora de salida:</label>
+                        <input type="time" name="hora" id="hora" placeholder="hora de salida">
             <input type="submit" data-inline="true" value="Submit" id="submit">
         </div>
     </body>
      <script type="text/javascript">
             $(document).ready(function() {
                 $('#submit').bind('onclick', function() {
-
-                    var json = ('#form-chance').serialize();
+                    alert("Llego");
+                    var json = $('#form-chance').serialize();
                     window.localStorage.setItem("chance", json);
                     var url = "http://localhost:8000/chance/create";
 

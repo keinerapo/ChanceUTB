@@ -57,8 +57,11 @@
                </div>
            </div>
        </div>
-       <script type="text/javascript">
-       $(document).on('ready',function(){
+        <div data-role="popup" id="popupBasic">
+        </div>
+         <script type="text/javascript">
+       $(document).ready(function(){
+        alert("llego aqui");
         $.ajax({
             url: 'http://localhost:8000/chance',
             type: 'GET'
@@ -73,8 +76,5 @@
         }
        });
        </script>
-        <div data-role="popup" id="popupBasic">
-
-        </div>
     </body>
 </html>

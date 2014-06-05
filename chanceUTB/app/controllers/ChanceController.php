@@ -10,8 +10,8 @@ class ChanceController extends BaseController{
 
 	public function create(){
 		$chance =  new Chance;
-		//$chance->fecha = Input::get('fecha');
-		//$chance->hora = Input::get('hora');
+		$chance->fecha = Input::get('fecha');
+		$chance->hora = Input::get('hora');
 		$chance->llegada = Input::get('llegada');
 		$chance->salida = Input::get('salida');
 		$chance->cupos = Input::get('cupos');
