@@ -32,49 +32,33 @@
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
         <title>Chance UTB</title>
-        <script> 
-            function abrir(url) { 
-            open(url,'','top=300,left=300,width=300,height=300') ; 
-            } 
-        </script>
     </head>
     <body>
        <div data-role="page" id="pageone">
             <div data-role="header">
                 <h1>CHANCE UTB</h1>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="pedirchance.html">Pedir Chance</a></li>
-                        <li><a href="crearchance.html">Ofrecer Chance</a></li> 
-                    </ul>
-                </div>
             </div>
-                <div data-role="main" class="ui-content">
-                   <h2>Chances disponibles</h2>
-                   <ul id="chances" data-role="listview" data-filter="true" data-filter-placeholder="Chances disponibles" data-split-icon="search">
-
-                    </ul>
-               </div>
-           </div>
-       </div>
-       <script type="text/javascript">
-       $(document).on('ready',function(){
-        $.ajax({
-            url: 'http://localhost:8000/chance',
-            type: 'GET'
-        }).done function(data){
-            var value = JSON.parse(data);
-            $("#chances").listview();
-                    for (var i = 0; i < value.length; i++) {
-
-                        $("#chances").append('<li><a href="#popupBasic" data-rel="popup" data-role="button" data-inline="true" data-transition="pop">' + value[i].salida + ' - ' + value[i].llegada + '</a></li>');
-                    }
-                    $("#chances").listview('refresh');
-        }
-       });
-       </script>
-        <div data-role="popup" id="popupBasic">
-
         </div>
+        <script type="text/javascript">
+            $(document).on('ready', function() {
+                str = $(location).attr('search');
+                var res = str.split("=");
+                var id = res[1];
+                var url1 = 'http://localhost:8000/chance/' + id;
+                $.ajax({
+                    url: url1,
+                    type: 'GET'
+                }).done(function(data)
+                {
+                    var value = JSON.parse(data);
+                    //alert(value.Primer_Nombre);
+                    $("#chance").append('<p>Salida: ' + value.salida + '</p>');
+                    $("#chance").append('<p>Llegada: ' + value.llegada + '</p>');
+                    $("#chance").append('<p>Cupos: ' + value.cupos + '</p>');
+                    $("#chance").append('<p>Placa del carro: ' + value.placa + '</p>');
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

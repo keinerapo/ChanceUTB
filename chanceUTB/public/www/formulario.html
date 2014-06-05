@@ -56,22 +56,22 @@ and open the template in the editor.
     </body>
     <script type="text/javascript">
             $(document).ready(function() {
-                $('#submit').bind('onclick', function() {
+                $('#submit').bind("click", function() {
 
-                    var json = ('#forminsc').serialize();
-                    window.localStorage.setItem("usuario", json);
+                    var ajson = $("#forminsc").serialize();
+                    window.localStorage.setItem("usuario", ajson);
                     var url = "http://localhost:8000/usuario/create";
 
                     $.ajax({
                         type: "GET",
                         url: url,
-                        dataType: "json",
+                        dataType: "ajson",
                         data: json,
                         success: function(data) {
                             alert(data);
                         }
                     });
-                    //location.reload(true);
+                    location.reload(true);
                 });
             });
 
